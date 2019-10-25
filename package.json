@@ -1,35 +1,55 @@
 {
-  "name": "cloud",
+  "name": "egg-cloud",
   "version": "1.0.0",
-  "description": "云服务器node运行代码",
-  "main": "index.js",
+  "description": "",
+  "eggPlugin": {
+    "name": "cloud"
+  },
+  "keywords": [
+    "egg",
+    "eggPlugin",
+    "egg-plugin"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "autod": "^3.0.1",
+    "autod-egg": "^1.1.0",
+    "egg": "^2.16.0",
+    "egg-bin": "^4.11.0",
+    "egg-ci": "^1.11.0",
+    "egg-mock": "^3.21.0",
+    "eslint": "^5.13.0",
+    "eslint-config-egg": "^7.1.0"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run lint -- --fix && egg-bin pkgfiles && npm run test-local",
+    "test-local": "egg-bin test",
+    "cov": "egg-bin cov",
+    "lint": "eslint .",
+    "ci": "egg-bin pkgfiles --check && npm run lint && npm run cov",
+    "pkgfiles": "egg-bin pkgfiles",
+    "autod": "autod"
+  },
+  "files": [
+    "app.js",
+    "agent.js",
+    "config",
+    "app"
+  ],
+  "ci": {
+    "version": "8, 10"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/strongcode9527/cloud.git"
+    "url": "git+https://github.com/eggjs/egg-cloud.git"
   },
-  "author": "",
-  "license": "ISC",
   "bugs": {
-    "url": "https://github.com/strongcode9527/cloud/issues"
+    "url": "https://github.com/eggjs/egg/issues"
   },
-  "homepage": "https://github.com/strongcode9527/cloud#readme",
-  "devDependencies": {
-    "babel": "^6.23.0",
-    "babel-core": "^6.26.3",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-3": "^6.24.1",
-    "babel-register": "^6.26.0",
-    "pm2": "^3.2.2"
-  },
-  "dependencies": {
-    "ejs": "^2.6.1",
-    "koa": "^2.6.1",
-    "koa-body": "^4.0.4",
-    "koa-router": "^7.4.0",
-    "koa-views": "^6.1.4"
-  }
+  "homepage": "https://github.com/eggjs/egg-cloud#readme",
+  "author": "",
+  "license": "MIT"
 }
