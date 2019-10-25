@@ -1,10 +1,30 @@
+/* eslint valid-jsdoc: "off" */
+
 'use strict';
 
 /**
- * egg-cloud default config
- * @member Config#cloud
- * @property {String} SOME_KEY - some description
+ * @param {Egg.EggAppInfo} appInfo app info
  */
-exports.cloud = {
+module.exports = appInfo => {
+  /**
+   * built-in config
+   * @type {Egg.EggAppConfig}
+   **/
+  const config = exports = {};
 
+  // use for cookie sign key, should change to your own and keep security
+  config.keys = appInfo.name + '_1572002936854_824';
+
+  // add your middleware config here
+  config.middleware = [];
+
+  // add your user config here
+  const userConfig = {
+    // myAppName: 'egg',
+  };
+
+  return {
+    ...config,
+    ...userConfig,
+  };
 };

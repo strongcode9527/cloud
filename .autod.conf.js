@@ -8,10 +8,14 @@ module.exports = {
     'test',
     'benchmark',
   ],
-  devdep: [
+  dep: [
     'egg',
+    'egg-scripts',
+  ],
+  devdep: [
     'egg-ci',
     'egg-bin',
+    'egg-mock',
     'autod',
     'autod-egg',
     'eslint',
@@ -19,7 +23,7 @@ module.exports = {
   ],
   exclude: [
     './test/fixtures',
-    './docs',
-    './coverage',
+    './dist',
   ],
 };
+

@@ -1,63 +1,33 @@
-# egg-cloud
+# cloud
 
-[![NPM version][npm-image]][npm-url]
-[![build status][travis-image]][travis-url]
-[![Test coverage][codecov-image]][codecov-url]
-[![David deps][david-image]][david-url]
-[![Known Vulnerabilities][snyk-image]][snyk-url]
-[![npm download][download-image]][download-url]
 
-[npm-image]: https://img.shields.io/npm/v/egg-cloud.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/egg-cloud
-[travis-image]: https://img.shields.io/travis/eggjs/egg-cloud.svg?style=flat-square
-[travis-url]: https://travis-ci.org/eggjs/egg-cloud
-[codecov-image]: https://img.shields.io/codecov/c/github/eggjs/egg-cloud.svg?style=flat-square
-[codecov-url]: https://codecov.io/github/eggjs/egg-cloud?branch=master
-[david-image]: https://img.shields.io/david/eggjs/egg-cloud.svg?style=flat-square
-[david-url]: https://david-dm.org/eggjs/egg-cloud
-[snyk-image]: https://snyk.io/test/npm/egg-cloud/badge.svg?style=flat-square
-[snyk-url]: https://snyk.io/test/npm/egg-cloud
-[download-image]: https://img.shields.io/npm/dm/egg-cloud.svg?style=flat-square
-[download-url]: https://npmjs.org/package/egg-cloud
 
-<!--
-Description here.
--->
+## QuickStart
 
-## Install
+<!-- add docs here for user -->
+
+see [egg docs][egg] for more detail.
+
+### Development
 
 ```bash
-$ npm i egg-cloud --save
+$ npm i
+$ npm run dev
+$ open http://localhost:7001/
 ```
 
-## Usage
+### Deploy
 
-```js
-// {app_root}/config/plugin.js
-exports.cloud = {
-  enable: true,
-  package: 'egg-cloud',
-};
+```bash
+$ npm start
+$ npm stop
 ```
 
-## Configuration
+### npm scripts
 
-```js
-// {app_root}/config/config.default.js
-exports.cloud = {
-};
-```
+- Use `npm run lint` to check code style.
+- Use `npm test` to run unit test.
+- Use `npm run autod` to auto detect dependencies upgrade, see [autod](https://www.npmjs.com/package/autod) for more detail.
 
-see [config/config.default.js](config/config.default.js) for more detail.
 
-## Example
-
-<!-- example here -->
-
-## Questions & Suggestions
-
-Please open an issue [here](https://github.com/eggjs/egg/issues).
-
-## License
-
-[MIT](LICENSE)
+[egg]: https://eggjs.org
