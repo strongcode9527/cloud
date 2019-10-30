@@ -14,8 +14,9 @@ class UpdateBlog extends Subscription {
   async subscribe() {
     console.log('in--------------');
     // 获取仓库信息，目的获取issues的数量，便于分页
-    // const repo = await this.ctx.curl('https://api.github.com/repos/strongcode9527/blog');
-    // const blogs = await this.ctx.curl('https://api.github.com/repos/strongcode9527/blog/issues', {});
+    const repo = await this.ctx.curl('https://api.github.com/repos/strongcode9527/blog');
+    const blogs = await this.ctx.curl('https://api.github.com/repos/strongcode9527/blog/issues', {});
+    console.log(repo, blogs);
   }
 }
 
