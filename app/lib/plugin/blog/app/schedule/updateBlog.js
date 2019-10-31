@@ -2,7 +2,7 @@
 const Subscription = require('egg').Subscription;
 const fs = require('fs');
 const path = require('path');
-
+const token = [ 'd4f2affd63cb63e6bf2805', 'e185da3654f5635300' ];
 class UpdateBlog extends Subscription {
   // 通过 schedule 属性来设置定时任务的执行间隔等配置
   static get schedule() {
@@ -14,10 +14,11 @@ class UpdateBlog extends Subscription {
 
   // subscribe 是真正定时任务执行时被运行的函数
   async subscribe() {
-    const token = 'token d4f2affd63cb63e6bf2805e185da3654f5635300';
     // 获取仓库信息，目的获取issues的数量，便于分页
     const repo = await this.ctx.curl('https://api.github.com/repos/strongcode9527/blog');
-    const blogs = await this.ctx.curl('https://api.github.com/repos/strongcode9527/blog/issues?creator=strongcode9527', {});
+    const blogs = await this.ctx.curl('https://api.github.com/repos/strongcode9527/blog/issues?creator=strongcode9527', {
+
+    });
     // fs.writeFileSync(path.resolve(__dirname, ))
     console.log(process.cwd());
   }
