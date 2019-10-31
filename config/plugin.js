@@ -1,9 +1,10 @@
 'use strict';
+const path = require('path');
 
 /** @type Egg.EggPlugin */
 module.exports = {
-  // had enabled by egg
-  // static: {
-  //   enable: true,
-  // }
+  handleBlog: {
+    enable: true,
+    path: path.join(__dirname, '../app/lib/plugin/blog'),
+  },
 };
