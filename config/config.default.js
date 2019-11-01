@@ -18,6 +18,16 @@ module.exports = appInfo => {
   // add your middleware config here
   config.middleware = [];
 
+  if (process.env.http_proxy) {
+    config.httpclient = {
+      request: {
+        enableProxy: true,
+        rejectUnauthorized: false,
+        proxy: process.env.http_proxy,
+      },
+    };
+  }
+
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
