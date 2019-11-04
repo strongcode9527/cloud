@@ -7,6 +7,10 @@ class BlogController extends Controller {
     const { ctx } = this;
     ctx.body = 'hi, egg';
   }
+  async getBlog() {
+    const { ctx } = this;
+    ctx.body = this.app.handleBlog.get(ctx.params.id);
+  }
 }
 
 module.exports = BlogController;
