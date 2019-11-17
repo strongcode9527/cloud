@@ -2,5 +2,5 @@
 const Client = require('./lib/client');
 
 module.exports = app => {
-  app.handleBlog = new Client();
+  app.handleBlog = new Client(app);
 };

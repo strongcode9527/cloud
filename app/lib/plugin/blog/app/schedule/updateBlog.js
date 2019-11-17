@@ -22,7 +22,6 @@ class UpdateBlog extends Subscription {
     const repo = await this.ctx.curl('https://api.github.com/repos/strongcode9527/blog');
     const issuesLength = safeGetValue(0, [ 'open_issues' ], repo);
     const totalPages = issuesLength % 20 ? issuesLength / 20 : issuesLength / 20 + 1;
-    console.log(`token ${token.join('')}`);
 
     for (let i = 0; i < totalPages; i++) {
       const blogs = await this.ctx.curl('https://api.github.com/repos/strongcode9527/blog/issues?creator=strongcode9527', {
@@ -41,6 +40,7 @@ class UpdateBlog extends Subscription {
         jsonData[blog.number] = { updated_at: blog.updated_at, title: blog.title };
       });
       this.writeFileSync(blogs);
+      this.ctx.app.versionConfig = JSON.stringify(jsonData);
       fs.writeFileSync(versionConfigPath, JSON.stringify(jsonData));
     } else { // 更新version文件
       const versionFile = fs.readFileSync(versionConfigPath);
@@ -48,13 +48,14 @@ class UpdateBlog extends Subscription {
       const updateBlogs = [];
       blogs.forEach(blog => {
         if (safeGetValue('', [ blog.number, 'updated_at' ], versionJson) !== blog.updated_at) {
-          console.log(safeGetValue('', [ blog.number ], versionJson), blog.updated_at)
           versionJson[blog.number] = { updated_at: blog.updated_at, title: blog.title };
           updateBlogs.push(blog);
         }
       });
+      this.ctx.app.versionConfig = JSON.stringify(versionJson);
       if (updateBlogs.length) {
         fs.writeFileSync(versionConfigPath, JSON.stringify(versionJson));
+        this.ctx.app.versionConfig = JSON.stringify(versionJson);
         this.writeFileSync(updateBlogs);
       }
     }

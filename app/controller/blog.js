@@ -7,9 +7,16 @@ class BlogController extends Controller {
     const { ctx } = this;
     ctx.body = 'hi, egg';
   }
-  async getBlog() {
+  async getBlogDetail() {
     const { ctx } = this;
     ctx.body = this.app.handleBlog.get(ctx.params.id);
+  }
+
+  async getBlogList() {
+    const { ctx } = this;
+    console.log('in');
+    console.log(this.app.versionConfig);
+    ctx.body = this.app.versionConfig || {};
   }
 }
 

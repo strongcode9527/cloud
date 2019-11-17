@@ -7,8 +7,9 @@ const baseUrl = path.resolve(process.cwd(), './.blogs');
 class Client extends Base {
   constructor(options) {
     super(options);
+    this._app = options;
     // 在初始化成功以后记得 ready
-    console.log('in there');
+    console.log('in there', options);
   }
 
   get(id) {
