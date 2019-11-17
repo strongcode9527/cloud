@@ -18,6 +18,12 @@ class UpdateBlog extends Subscription {
 
   // subscribe 是真正定时任务执行时被运行的函数
   async subscribe() {
+    if (!this.ctx.app.hasBlogFolder && !fs.existsSync(blogDataBaseUrl)) {
+      fs.mkdirSync(blogDataBaseUrl);
+      this.ctx.app.hasBlogFolder = true;
+    } else {
+      this.ctx.app.hasBlogFolder = true;
+    }
     // 获取仓库信息，目的获取issues的数量，便于分页
     const repo = await this.ctx.curl('https://api.github.com/repos/strongcode9527/blog');
     const issuesLength = safeGetValue(0, [ 'open_issues' ], repo);
