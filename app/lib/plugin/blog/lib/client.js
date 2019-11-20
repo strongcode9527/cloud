@@ -9,7 +9,6 @@ class Client extends Base {
     super(options);
     this._app = options;
     // 在初始化成功以后记得 ready
-    console.log('in there', options);
   }
 
   get(id) {

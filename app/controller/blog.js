@@ -14,9 +14,15 @@ class BlogController extends Controller {
 
   async getBlogList() {
     const { ctx } = this;
-    console.log('in');
-    console.log(this.app.versionConfig);
-    ctx.body = this.app.versionConfig || {};
+    const data = JSON.parse(this.app.versionConfig || '{}');
+    const result = [];
+    for (const i in data) {
+      console.log(i, data);
+      const tmp = data[i];
+      tmp.id = i;
+      result.push(tmp);
+    }
+    ctx.body = result;
   }
 }
 
